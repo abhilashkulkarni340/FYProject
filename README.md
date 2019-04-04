@@ -8,3 +8,5 @@ Create a virtual environment and install all dependencies using requirements_pro
 
 ``` pip install -m requirements_prot1.txt```
 
+Run driver.py
+```python driver.py```
