@@ -156,4 +156,26 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op,cross_entropy_lo
                         print("  Step", step, "loss =", loss_value)
 
 
-print("\nPassed training function")
+print("\nPassed training function") 
+
+def conv_hff(vgg_layer, kernel_size, n_split, num_classes):
+
+        # Initialize parameters
+        dilation_rate = 2
+        branch = list()
+        feature_map = None
+
+        # Split the computation into n_split branches
+        for i in range(n_split):
+                layer_fr = tf.layers.conv2d(vgg_layer, num_classes,kernel_size=1, strides=1, padding='same', dilation_rate=2)
+                branch.append(layer_fr)
+                dilation_rate += 1
+        
+        # Concatenate feature maps hierarchically
+        feature_map = branch[0]
+        for i in range(1,len(branch)-2):
+                feature_map += branch[i]
+
+        return feature_map
+
+print("\nPassed HFF function")
