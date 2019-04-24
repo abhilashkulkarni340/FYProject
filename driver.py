@@ -22,7 +22,7 @@ def run():
         arg=int(input("\nInput 0 for Training\nInput 1 for Testing\n"))
 
         #Basic parameters
-        print("\nSetting basic parameters")
+        print("\nSetting basic parameters") 
         num_classes=2
         image_shape=(160,576)
         data_dir='data'
@@ -101,3 +101,4 @@ def run():
 
 if __name__ == '__main__':
     run()
+                
